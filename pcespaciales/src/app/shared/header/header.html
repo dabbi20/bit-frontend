@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <i class="fas fa-gamepad me-2"></i>
+      <span class="h4 mb-0">PC Espaciales Gaming</span>
+    </a>
+    
+    <!-- Barra de búsqueda -->
+    <div class="d-flex align-items-center me-auto">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Buscar productos..." [(ngModel)]="searchTerm">
+        <button class="btn btn-outline-light" type="button">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a routerLink="/productos" routerLinkActive="active" class="nav-link">
+            <i class="fas fa-laptop me-1"></i>Productos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/contacto" routerLinkActive="active" class="nav-link">
+            <i class="fas fa-envelope me-1"></i>Contacto
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fas fa-phone me-1"></i>+57 310 123 4567
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fas fa-clock me-1"></i>Lun-Vie: 9am-6pm
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a routerLink="/carrito" routerLinkActive="active" class="nav-link position-relative">
+            <i class="fas fa-shopping-cart me-1"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{cartCount}}
+              <span class="visually-hidden">items</span>
+            </span>
+          </a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="!isAuthenticated">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <i class="fas fa-user me-1"></i>Usuario
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" routerLink="/auth/login">
+              <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión</a></li>
+            <li><a class="dropdown-item" routerLink="/registro">
+              <i class="fas fa-user-plus me-2"></i>Registrarse</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown" *ngIf="isAuthenticated">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <i class="fas fa-user me-1"></i>{{username}}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" routerLink="/perfil">
+              <i class="fas fa-user me-2"></i>Mi Perfil</a></li>
+            <li><a class="dropdown-item" routerLink="/pedidos">
+              <i class="fas fa-shopping-bag me-2"></i>Mis Pedidos</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="logout()">
+              <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

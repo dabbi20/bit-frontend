@@ -1,0 +1,112 @@
+.navbar {
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.navbar-brand i {
+  font-size: 1.8rem;
+}
+
+.nav-link {
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem !important;
+}
+
+.nav-link:hover {
+  color: #ffd700 !important;
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  color: #ffd700 !important;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 5px;
+}
+
+.navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255,255,255,0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+}
+
+.input-group {
+  max-width: 400px;
+  margin: 0 1rem;
+}
+
+.form-control {
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: transparent;
+}
+
+.btn-outline-light {
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  margin-left: -1px;
+}
+
+.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-nav .dropdown-menu {
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  color: #333;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background: #f8f9fa;
+  color: #000;
+  transform: translateX(5px);
+}
+
+.dropdown-divider {
+  margin: 0.25rem 0;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    margin-top: 1rem;
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+  }
+  
+  .input-group {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}

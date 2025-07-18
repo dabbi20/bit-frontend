@@ -1,0 +1,95 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h3 class="text-center mb-0">¡Bienvenido! Primero debes registrarte</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="nombres" class="form-label">Nombres</label>
+              <input type="text" class="form-control" id="nombres" formControlName="nombres" required>
+              <div *ngIf="registerForm.get('nombres')?.invalid && (registerForm.get('nombres')?.dirty || registerForm.get('nombres')?.touched)" class="text-danger">
+                <small *ngIf="registerForm.get('nombres')?.errors?.['required']">Los nombres son requeridos.</small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="apellidos" class="form-label">Apellidos</label>
+              <input type="text" class="form-control" id="apellidos" formControlName="apellidos" required>
+              <div *ngIf="registerForm.get('apellidos')?.invalid && (registerForm.get('apellidos')?.dirty || registerForm.get('apellidos')?.touched)" class="text-danger">
+                <small *ngIf="registerForm.get('apellidos')?.errors?.['required']">Los apellidos son requeridos.</small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" formControlName="email" required>
+              <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)" class="text-danger">
+                <small *ngIf="registerForm.get('email')?.errors?.['required']">El email es requerido.</small>
+                <small *ngIf="registerForm.get('email')?.errors?.['email']">Por favor ingresa un email válido.</small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="cell" class="form-label">Celular</label>
+              <input type="tel" class="form-control" id="cell" formControlName="cell" required>
+              <div *ngIf="registerForm.get('cell')?.invalid && (registerForm.get('cell')?.dirty || registerForm.get('cell')?.touched)" class="text-danger">
+                <small *ngIf="registerForm.get('cell')?.errors?.['required']">El celular es requerido.</small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password" formControlName="password" required>
+              <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)" class="text-danger">
+                <small *ngIf="registerForm.get('password')?.errors?.['required']">La contraseña es requerida.</small>
+                <small *ngIf="registerForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+              <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" required>
+              <div *ngIf="registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)" class="text-danger">
+                <small *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Por favor confirma tu contraseña.</small>
+                <small *ngIf="registerForm.get('confirmPassword')?.errors?.['mustMatch']">Las contraseñas no coinciden.</small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <button type="button" class="btn btn-danger" (click)="clearUsers()" [disabled]="loading">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                Limpiar Usuarios (solo para desarrollo)
+              </button>
+            </div>
+
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid || loading">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                Registrar
+              </button>
+            </div>
+
+            <div *ngIf="error" class="alert alert-danger">
+              {{ error }}
+            </div>
+
+            <div *ngIf="success" class="alert alert-success">
+              {{ success }}
+            </div>
+          </form>
+          <div class="text-center mt-3">
+            <p class="mb-0">
+              ¿Ya tienes una cuenta? 
+              <a routerLink="/auth/login" class="text-primary text-decoration-none">
+                Inicia sesión aquí
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
