@@ -1,0 +1,26 @@
+<header class="app-header">
+  <div class="container">
+    <div class="logo">
+      <a routerLink="/">Mi Aplicación</a>
+    </div>
+    
+    <nav class="main-nav" *ngIf="isAuthenticated">
+      <ul>
+        <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+        <li><a href="#">Otra Página</a></li>
+      </ul>
+    </nav>
+
+    <div class="user-actions" *ngIf="isAuthenticated">
+      <div class="user-info">
+        <span class="user-name">{{ user?.name || 'Usuario' }}</span>
+        <button class="btn btn-logout" (click)="logout()">Cerrar Sesión</button>
+      </div>
+    </div>
+
+    <div class="auth-actions" *ngIf="!isAuthenticated">
+      <a routerLink="/auth/login" class="btn btn-outline">Iniciar Sesión</a>
+      <a routerLink="/auth/register" class="btn btn-primary">Registrarse</a>
+    </div>
+  </div>
+</header>

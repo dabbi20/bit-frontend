@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { AuthService } from '../../core/services/auth';
+import { AuthService } from '../../core/services/auth.service';
+import { User } from '../../core/models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -16,16 +17,16 @@ export class HeaderComponent {
   cartCount: number = 0;
   username: string = '';
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {
-    // Suscribirse a cambios en el usuario actual
-    this.authService.usuarioActual$.subscribe(usuario => {
-      this.username = usuario ? `${usuario.nombres} ${usuario.apellidos}` : 'Usuario';
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  
+  constructor() {
+    // Subscribe to current user changes
+    this.authService.currentUser.subscribe((user: User | null) => {
+      this.username = user?.name || 'Usuario';
     });
     
-    // Simular obtener el conteo del carrito
+    // Simulate getting cart count
     this.cartCount = 0;
   }
 

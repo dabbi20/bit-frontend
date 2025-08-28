@@ -1,0 +1,96 @@
+.register-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.register-container .form-group {
+  margin-bottom: 1rem;
+}
+
+.register-container .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.register-container .form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.register-container .form-group input.ng-invalid.ng-touched {
+  border-color: #dc3545;
+}
+
+.register-container .form-group .error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.register-container button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.register-container button:hover {
+  background-color: #218838;
+}
+
+.register-container button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.register-container .login-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.register-container .login-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.register-container .login-link a:hover {
+  text-decoration: underline;
+}
+
+.register-container .alert {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.register-container .alert.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.register-container .alert.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}

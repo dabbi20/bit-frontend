@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../../core/services/auth';
+import { AuthService } from '../../../core/services/auth.service';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +17,12 @@ export class LoginComponent {
   error: string = '';
   success: string = '';
 
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
+  constructor() {
     console.log('Componente de login inicializado');
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -29,7 +30,7 @@ export class LoginComponent {
     });
 
     // Verificar si viene del registro exitoso
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params: any) => {
       if (params['success']) {
         this.success = params['success'];
       }
@@ -42,8 +43,8 @@ export class LoginComponent {
     }
 
     const { email, password } = this.loginForm.value;
-    this.authService.login({ email, password }).subscribe({
-      next: (response) => {
+    this.authService.login(email, password).subscribe({
+      next: (response: any) => {
         if (response.allOK) {
           // Redirigir a productos después del login exitoso
           this.router.navigate(['/productos']);
@@ -51,7 +52,7 @@ export class LoginComponent {
           this.error = response.message || 'Error al iniciar sesión';
         }
       },
-      error: (error) => {
+      error: (error: any) => {
         this.error = error.message || 'Error al iniciar sesión';
       }
     });

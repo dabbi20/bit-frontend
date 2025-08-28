@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './shared/header/header';
+import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './shared/footer/footer';
 
 @Component({
